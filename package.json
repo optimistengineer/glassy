@@ -1,0 +1,118 @@
+{
+  "name": "glassy",
+  "displayName": "Glassy",
+  "description": "Glass frame for VS Code on macOS",
+  "version": "0.1.0",
+  "icon": "resources/icon.png",
+  "publisher": "optimistengineer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/optimistengineer/glassy"
+  },
+  "homepage": "https://github.com/optimistengineer/glassy#readme",
+  "bugs": {
+    "url": "https://github.com/optimistengineer/glassy/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "galleryBanner": {
+    "color": "#232734",
+    "theme": "dark"
+  },
+  "keywords": [
+    "transparency",
+    "opacity",
+    "glass",
+    "macos",
+    "window"
+  ],
+  "os": [
+    "darwin"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "glassy.install",
+        "title": "Glassy: Enable Transparency"
+      },
+      {
+        "command": "glassy.uninstall",
+        "title": "Glassy: Disable Transparency"
+      },
+      {
+        "command": "glassy.increase",
+        "title": "Glassy: Increase Opacity"
+      },
+      {
+        "command": "glassy.decrease",
+        "title": "Glassy: Decrease Opacity"
+      },
+      {
+        "command": "glassy.maximize",
+        "title": "Glassy: Maximum Transparency"
+      },
+      {
+        "command": "glassy.minimize",
+        "title": "Glassy: Reset to Opaque"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "glassy.increase",
+        "key": "ctrl+alt+z",
+        "mac": "cmd+alt+z"
+      },
+      {
+        "command": "glassy.decrease",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c"
+      },
+      {
+        "command": "glassy.minimize",
+        "key": "ctrl+alt+x",
+        "mac": "cmd+alt+x"
+      }
+    ],
+    "configuration": {
+      "title": "Glassy",
+      "properties": {
+        "glassy.alpha": {
+          "type": "integer",
+          "default": 255,
+          "minimum": 10,
+          "maximum": 255,
+          "description": "Window opacity level (10 = very transparent, 255 = fully opaque)"
+        },
+        "glassy.step": {
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "maximum": 50,
+          "description": "Step size for opacity increase/decrease"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "node esbuild.js --production",
+    "watch": "node esbuild.js --watch",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.4.0",
+    "@vscode/vsce": "^2.24.0"
+  }
+}

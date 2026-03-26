@@ -1,0 +1,16 @@
+.vscode/**
+src/**
+node_modules/**
+*.ts
+!dist/**/*.js
+dist/**/*.map
+tsconfig.json
+esbuild.js
+.gitignore
+.DS_Store
+.claude/**
+*.glassy-backup
+*.tmp
+assets/
+resources/**
+!resources/icon.png
