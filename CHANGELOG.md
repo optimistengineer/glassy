@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Improved installation flow to apply transparency patches immediately
+- Added auto-restart prompt for a smoother onboarding experience
+- Fixed stability issues related to restart handling
+
 ## 0.1.0
 
 - Initial release
