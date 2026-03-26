@@ -272,13 +272,6 @@ export function activate(context: vscode.ExtensionContext) {
                 return;
             }
 
-            const confirm = await vscode.window.showWarningMessage(
-                'Glassy will patch VS Code\'s main process to enable window transparency. ' +
-                'After a VS Code update, the patch is re-applied automatically. Continue?',
-                'Install', 'Cancel'
-            );
-            if (confirm !== 'Install') return;
-
             const result = installPatch();
             safeAppendLine(`Install: ${result.message}`);
 
