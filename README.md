@@ -54,8 +54,8 @@ You can also:
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `glassy.alpha` | `255` | Opacity level (10 = very transparent, 255 = fully opaque) |
-| `glassy.step` | `2` | Step size per keypress |
+| `glassy.alpha` | `240` | Opacity level (10 = very transparent, 255 = fully opaque) |
+| `glassy.step` | `4` | Step size per keypress |
 
 ### Recommended Values
 

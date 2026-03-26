@@ -18,10 +18,12 @@ function getMainProcessInjection(configPath: string): string {
     // Static imports are hoisted to module top — resolved BEFORE any code runs.
     // This means our browser-window-created listener registers before VS Code creates windows.
     // Use unique Glassy_ prefixes to avoid variable collision crashes if other patches exist.
+    // Prime each window once at near-opaque opacity to avoid the first visible macOS flicker
+    // when transitioning from fully opaque to transparent with setOpacity().
     return `
 ${PATCH_TAG_START}
 import{app as Glassy_app,BrowserWindow as Glassy_BW}from"electron";import{readFileSync as Glassy_rf,existsSync as Glassy_ex,watchFile as Glassy_wf}from"fs";
-;(()=>{try{const Glassy_cp='${escaped}';let Glassy_o=1;const Glassy_read=()=>{try{if(!Glassy_ex(Glassy_cp))return;const c=JSON.parse(Glassy_rf(Glassy_cp,"utf8"));if(typeof c.alpha==="number"&&c.alpha>=10&&c.alpha<=255)Glassy_o=c.alpha/255.0}catch(e){}};Glassy_read();Glassy_app.on("browser-window-created",(e,w)=>{try{w.setOpacity(Glassy_o)}catch(e){}});const Glassy_applyAll=()=>{Glassy_read();Glassy_BW.getAllWindows().forEach(w=>{try{w.setOpacity(Glassy_o)}catch(e){}})};Glassy_app.whenReady().then(()=>{Glassy_applyAll();Glassy_wf(Glassy_cp,{interval:500},Glassy_applyAll)})}catch(e){}})();
+;(()=>{try{const Glassy_cp='${escaped}';let Glassy_o=1;const Glassy_seen=new WeakSet(),Glassy_apply=w=>{try{if(!Glassy_seen.has(w)){Glassy_seen.add(w);if(Glassy_o>=1)w.setOpacity(.999)}w.setOpacity(Glassy_o)}catch(e){}};const Glassy_read=()=>{try{if(!Glassy_ex(Glassy_cp))return;const c=JSON.parse(Glassy_rf(Glassy_cp,"utf8"));if(typeof c.alpha==="number"&&c.alpha>=10&&c.alpha<=255)Glassy_o=c.alpha/255.0}catch(e){}};Glassy_read();Glassy_app.on("browser-window-created",(e,w)=>{Glassy_apply(w)});const Glassy_applyAll=()=>{Glassy_read();Glassy_BW.getAllWindows().forEach(Glassy_apply)};Glassy_app.whenReady().then(()=>{Glassy_applyAll();Glassy_wf(Glassy_cp,{interval:500},Glassy_applyAll)})}catch(e){}})();
 ${PATCH_TAG_END}`;
 }
 

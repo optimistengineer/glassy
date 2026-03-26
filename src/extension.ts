@@ -4,8 +4,10 @@ import { installPatch, uninstallPatch, isPatched, writeConfig, removeConfig } fr
 const ENABLED_KEY = 'glassy.enabled';
 const PROMPT_SHOWN_KEY = 'glassy.promptShown';
 const MIN_ALPHA = 10; // Safety: prevent completely invisible windows
+const DEFAULT_ALPHA = 240;
+const DEFAULT_STEP = 4;
 
-let currentAlpha: number = 255;
+let currentAlpha: number = DEFAULT_ALPHA;
 let outputChannel: vscode.OutputChannel;
 let statusBarItem: vscode.StatusBarItem;
 let debounceTimer: ReturnType<typeof setTimeout> | undefined;
@@ -157,8 +159,8 @@ async function restartVSCode(): Promise<boolean> {
     let script = '';
 
     if (pid) {
-        // Wait up to 15 seconds for VS Code to exit before reopening
-        script = `i=0; while [ $i -lt 30 ]; do if ! kill -0 ${pid} 2>/dev/null; then ${openCmd}; exit 0; fi; sleep 0.5; i=$((i+1)); done; ${openCmd}`;
+        // Reopen only after the current process exits to avoid duplicate instances.
+        script = `i=0; while [ $i -lt 30 ]; do if ! kill -0 ${pid} 2>/dev/null; then ${openCmd}; exit 0; fi; sleep 0.5; i=$((i+1)); done; osascript -e 'display notification "Please reopen VS Code manually to finish applying Glassy." with title "Glassy"'`;
     } else {
         script = `sleep 2 && ${openCmd}`;
     }
@@ -228,7 +230,7 @@ export function activate(context: vscode.ExtensionContext) {
     safeAppendLine(`Patch: ${patched ? 'installed' : 'not installed'}, User opted in: ${userEnabled}`);
 
     currentAlpha = clampAlpha(
-        vscode.workspace.getConfiguration('glassy').get<number>('alpha', 255)
+        vscode.workspace.getConfiguration('glassy').get<number>('alpha', DEFAULT_ALPHA)
     );
 
     // Auto-re-patch after VS Code update
@@ -319,12 +321,12 @@ export function activate(context: vscode.ExtensionContext) {
     // --- Opacity commands ---
     context.subscriptions.push(
         vscode.commands.registerCommand('glassy.increase', () => {
-            const step = vscode.workspace.getConfiguration('glassy').get<number>('step', 2);
+            const step = vscode.workspace.getConfiguration('glassy').get<number>('step', DEFAULT_STEP);
             currentAlpha = clampAlpha(currentAlpha + step);
             applyAlpha();
         }),
         vscode.commands.registerCommand('glassy.decrease', () => {
-            const step = vscode.workspace.getConfiguration('glassy').get<number>('step', 2);
+            const step = vscode.workspace.getConfiguration('glassy').get<number>('step', DEFAULT_STEP);
             currentAlpha = clampAlpha(currentAlpha - step);
             applyAlpha();
         }),
@@ -343,7 +345,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.workspace.onDidChangeConfiguration(e => {
             if (e.affectsConfiguration('glassy.alpha')) {
                 const newAlpha = clampAlpha(
-                    vscode.workspace.getConfiguration('glassy').get<number>('alpha', 255)
+                    vscode.workspace.getConfiguration('glassy').get<number>('alpha', DEFAULT_ALPHA)
                 );
 
                 if (consumeExpectedConfigAlphaEvent(newAlpha)) {
