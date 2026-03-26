@@ -159,16 +159,26 @@ async function restartVSCode(): Promise<boolean> {
     let script = '';
 
     if (pid) {
-        // Reopen only after the current process exits to avoid duplicate instances.
-        script = `i=0; while [ $i -lt 30 ]; do if ! kill -0 ${pid} 2>/dev/null; then ${openCmd}; exit 0; fi; sleep 0.5; i=$((i+1)); done; osascript -e 'display notification "Please reopen VS Code manually to finish applying Glassy." with title "Glassy"'`;
+        // Wait for the monitored process to exit, then add extra delay for the
+        // main Electron process to fully terminate (VSCODE_PID may refer to the
+        // extension host, which exits before the main process).
+        script = `exec >/tmp/glassy_restart.log 2>&1; echo "Waiting for pid ${pid}..."; i=0; while [ $i -lt 30 ]; do if ! kill -0 ${pid} 2>/dev/null; then echo "Process ${pid} died. Sleeping 2 sec."; sleep 2; echo "Running: ${openCmd}"; ${openCmd}; echo "Exit code: $?"; exit 0; fi; sleep 0.5; i=$((i+1)); done; echo "Timeout!"; osascript -e 'display notification "Please reopen VS Code manually to finish applying Glassy." with title "Glassy"'`;
     } else {
-        script = `sleep 2 && ${openCmd}`;
+        script = `exec >/tmp/glassy_restart.log 2>&1; echo "No pid. Sleeping 3s."; sleep 3; echo "Running: ${openCmd}"; ${openCmd}`;
     }
+
+    const env = { ...process.env };
+    delete env.ELECTRON_RUN_AS_NODE;
+    delete env.VSCODE_PID;
+    delete env.VSCODE_IPC_HOOK;
+    delete env.VSCODE_IPC_HOOK_EXTHOST;
+    delete env.VSCODE_IPC_HOOK_CLI;
 
     try {
         const child = spawn('sh', ['-c', script], {
             detached: true,
-            stdio: 'ignore'
+            stdio: 'ignore',
+            env
         });
         child.unref();
         await vscode.commands.executeCommand('workbench.action.quit');
