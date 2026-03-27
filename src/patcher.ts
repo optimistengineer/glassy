@@ -49,10 +49,12 @@ function getAppBasePath(): string {
         '/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app',
         '/Applications/Cursor.app/Contents/Resources/app',
         '/Applications/VSCodium.app/Contents/Resources/app',
+        '/Applications/Antigravity.app/Contents/Resources/app',
         path.join(home, 'Applications/Visual Studio Code.app/Contents/Resources/app'),
         path.join(home, 'Applications/Visual Studio Code - Insiders.app/Contents/Resources/app'),
         path.join(home, 'Applications/Cursor.app/Contents/Resources/app'),
         path.join(home, 'Applications/VSCodium.app/Contents/Resources/app'),
+        path.join(home, 'Applications/Antigravity.app/Contents/Resources/app'),
     ];
 
     for (const p of candidates) {
