@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- Added explicit support for the Antigravity editor
+
 ## 0.1.1
 
 - Improved installation flow to apply transparency patches immediately
