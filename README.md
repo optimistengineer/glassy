@@ -4,6 +4,9 @@ Bring a glass-like translucent window effect to VS Code on macOS.
 
 Glassy adds adjustable window transparency so your editor stays readable while your wallpaper and desktop ambience subtly come through in the background.
 
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/optimistengineer.glassy?label=VS%20Code%20Marketplace&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=optimistengineer.glassy)
+[![Open VSX](https://img.shields.io/open-vsx/v/optimistengineer/glassy?label=Open%20VSX&logo=eclipse)](https://open-vsx.org/extension/optimistengineer/glassy)
+
 ## Features
 
 - Adjust window opacity with keyboard shortcuts
