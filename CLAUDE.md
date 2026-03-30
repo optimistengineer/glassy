@@ -28,7 +28,7 @@ Runs in VS Code's extension host process. Handles all user-facing behavior:
 
 ### `src/patcher.ts`
 Handles the actual file patching of VS Code internals:
-- Locates VS Code's `out/main.js` across supported editors (VS Code, Insiders, Cursor, VSCodium, Antigravity)
+- Locates VS Code's `out/main.js` across supported editors (VS Code, Insiders, Cursor, VSCodium, Antigravity, Windsurf)
 - Prepends minified Electron code wrapped in `PATCH_TAG_START`/`PATCH_TAG_END` markers to `main.js`
 - The injected code calls `BrowserWindow.setOpacity()` and watches `~/.glassy-config.json` with 500ms polling
 - Uses atomic writes (temp file + rename) for `~/.glassy-config.json` to prevent corruption

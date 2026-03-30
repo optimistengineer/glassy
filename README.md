@@ -84,16 +84,13 @@ This removes the patch and restores VS Code to its original state before the ext
 ## Requirements
 
 - macOS 12.0 or later
-- Glassy detects the currently running app automatically and also falls back to common VS Code, VS Code Insiders, Cursor, Antigravity, and VSCodium locations in `/Applications` or `~/Applications`
+- Glassy detects the currently running app automatically and also falls back to common VS Code, VS Code Insiders, Cursor, Antigravity, VSCodium, and Windsurf locations in `/Applications` or `~/Applications`
 
 ## Known Limitations
 
 - Requires patching VS Code's internal files, which may trigger a modified or corrupt installation warning
 - Glassy attempts to re-apply the patch automatically after VS Code updates, but some updates may still require a manual restart
 - Transparency applies to the entire window including text content
-
-## Install Stats
-![Installs](assets/installs-chart.svg)
 
 ## License
 

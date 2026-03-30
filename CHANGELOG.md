@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.3
+
+- Added Windsurf editor support
+- Redesigned install stats chart with adaptive light/dark theme
+- Fixed preview images not rendering on Open VSX and VS Code Marketplace
+- Added GitHub Pages landing page
+- Consolidated resources into assets folder
+- Switched install tracking to use Marketplace downloadCount metric
+
 ## 0.1.2
 
 - Added explicit support for the Antigravity editor
