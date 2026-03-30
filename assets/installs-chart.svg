@@ -1,39 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" width="720" height="240">
-  <rect width="720" height="240" rx="8" fill="#0d1117"/>
-  
-    <line x1="56" y1="192" x2="696" y2="192" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="196" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">0</text>
-  
-    <line x1="56" y1="151.72413793103448" x2="696" y2="151.72413793103448" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="155.72413793103448" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">73</text>
-  
-    <line x1="56" y1="112" x2="696" y2="112" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="116" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">145</text>
-  
-    <line x1="56" y1="71.72413793103449" x2="696" y2="71.72413793103449" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="75.72413793103449" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">218</text>
-  
-    <line x1="56" y1="32" x2="696" y2="32" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="36" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">290</text>
-  
-  <text x="56" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-28</text>
-  <text x="376" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-29</text>
-  <text x="696" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-30</text>
-  
-    <rect x="56" y="8" width="10" height="3" rx="1" fill="#f0f6fc"/>
-    <text x="70" y="13" fill="#8b949e" font-size="10" font-family="monospace">Total</text>
-    <rect x="114" y="8" width="10" height="3" rx="1" fill="#58a6ff"/>
-    <text x="128" y="13" fill="#8b949e" font-size="10" font-family="monospace">VS Code</text>
-    <rect x="186" y="8" width="10" height="3" rx="1" fill="#3fb950"/>
-    <text x="200" y="13" fill="#8b949e" font-size="10" font-family="monospace">OpenVSX</text>
-  
-  <path d="M56.0,112.0 L376.0,73.9 L696.0,35.3" fill="none" stroke="#f0f6fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M56.0,190.3 L376.0,185.4 L696.0,178.8" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
-  <path d="M56.0,113.7 L376.0,80.6 L696.0,48.6" fill="none" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
-  
-    <circle cx="696" cy="35.31034482758622" r="3" fill="#f0f6fc"/>
-    <text x="702" y="39.31034482758622" fill="#f0f6fc" font-size="11" font-family="monospace" font-weight="bold">284</text>
-    <circle cx="696" cy="178.75862068965517" r="2.5" fill="#58a6ff"/>
-    <circle cx="696" cy="48.551724137931046" r="2.5" fill="#3fb950"/>
-  
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img" aria-label="Glassy install history">
+  <style>
+  svg { color-scheme: light dark; }
+  .title      { fill: #1a1a2e; font-size: 15px; font-weight: 600; }
+  .subtitle   { fill: #6b7280; font-size: 11px; font-weight: 400; }
+  .grid       { stroke: #e8e8ee; }
+  .axis-label { fill: #8a8a9a; font-size: 10px; }
+  .line-total   { stroke: #e8553d; }
+  .line-vscode  { stroke: #5b7cfa; }
+  .line-openvsx { stroke: #34c7a0; }
+  .dot-total   { fill: transparent; stroke: #e8553d; }
+  .dot-vscode  { fill: transparent; stroke: #5b7cfa; }
+  .dot-openvsx { fill: transparent; stroke: #34c7a0; }
+  .end-label       { fill: #1a1a2e; font-size: 11px; font-weight: 600; }
+  .end-value       { fill: #6b7280; font-size: 11px; font-weight: 400; }
+  .area-total-top    { stop-color: #e8553d; }
+  .area-total-bottom { stop-color: #e8553d; }
+
+  @media (prefers-color-scheme: dark) {
+    .title      { fill: #e2e2e8; }
+    .subtitle   { fill: #8b949e; }
+    .grid       { stroke: #2d2d3d; }
+    .axis-label { fill: #6e7681; }
+    .line-total   { stroke: #ff9b85; }
+    .line-vscode  { stroke: #8da4ff; }
+    .line-openvsx { stroke: #5eead4; }
+    .dot-total   { stroke: #ff9b85; }
+    .dot-vscode  { stroke: #8da4ff; }
+    .dot-openvsx { stroke: #5eead4; }
+    .end-label       { fill: #e2e2e8; }
+    .end-value       { fill: #8b949e; }
+    .area-total-top    { stop-color: #ff9b85; }
+    .area-total-bottom { stop-color: #ff9b85; }
+  }
+</style>
+  <defs>
+    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" class="area-total-top" stop-opacity="0.18"/>
+      <stop offset="60%" class="area-total-bottom" stop-opacity="0.04"/>
+      <stop offset="100%" class="area-total-bottom" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <text x="48" y="22" class="title" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Installs</text>
+  <text x="48" y="37" class="subtitle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Updated Mar 30</text>
+
+  <line x1="48" y1="220" x2="640" y2="220" class="grid" stroke-width="0.7"/>
+    <text x="40" y="223.5" class="axis-label" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">0</text>
+    <line x1="48" y1="162.66666666666669" x2="640" y2="162.66666666666669" class="grid" stroke-width="0.7"/>
+    <text x="40" y="166.16666666666669" class="axis-label" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">100</text>
+    <line x1="48" y1="105.33333333333334" x2="640" y2="105.33333333333334" class="grid" stroke-width="0.7"/>
+    <text x="40" y="108.83333333333334" class="axis-label" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">200</text>
+    <line x1="48" y1="48" x2="640" y2="48" class="grid" stroke-width="0.7"/>
+    <text x="40" y="51.5" class="axis-label" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">300</text>
+  <text x="48" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 27</text>
+    <text x="245.33333333333331" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 28</text>
+    <text x="442.66666666666663" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 29</text>
+    <text x="640" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 30</text>
+
+  <path d="M48.0,217.7 C80.9,204.2 179.6,156.9 245.3,136.9 C311.1,116.8 376.9,110.7 442.7,97.3 C508.4,83.9 607.1,63.4 640.0,56.6 L640.0,220.0 L48.0,220.0 Z" fill="url(#areaGrad)"/>
+  <path d="M48.0,218.3 C80.9,205.0 179.6,157.6 245.3,138.6 C311.1,119.6 376.9,115.5 442.7,104.2 C508.4,92.9 607.1,76.5 640.0,70.9" fill="none" class="line-openvsx" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48.0,219.4 C80.9,219.2 179.6,219.3 245.3,218.3 C311.1,217.2 376.9,215.2 442.7,213.1 C508.4,211.0 607.1,206.9 640.0,205.7" fill="none" class="line-vscode" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48.0,217.7 C80.9,204.2 179.6,156.9 245.3,136.9 C311.1,116.8 376.9,110.7 442.7,97.3 C508.4,83.9 607.1,63.4 640.0,56.6" fill="none" class="line-total" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <circle cx="640" cy="56.599999999999994" r="4.5" class="dot-total" stroke-width="2"/>
+    <text x="658" y="60.599999999999994" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Total</text>
+    <text x="697" y="60.599999999999994" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">285</text>
+    <circle cx="640" cy="70.93333333333334" r="3.5" class="dot-openvsx" stroke-width="1.8"/>
+    <text x="658" y="78.6" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Open VSX</text>
+    <text x="716.8" y="78.6" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">260</text>
+    <circle cx="640" cy="205.66666666666666" r="3.5" class="dot-vscode" stroke-width="1.8"/>
+    <text x="658" y="209.66666666666666" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">VS Code</text>
+    <text x="710.2" y="209.66666666666666" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">25</text>
 </svg>

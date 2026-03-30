@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-03-27",
+    "vscode": 1,
+    "openvsx": 3,
+    "total": 4
+  },
+  {
     "date": "2026-03-28",
     "vscode": 3,
     "openvsx": 142,
@@ -13,8 +19,8 @@
   },
   {
     "date": "2026-03-30",
-    "vscode": 24,
+    "vscode": 25,
     "openvsx": 260,
-    "total": 284
+    "total": 285
   }
 ]
