@@ -57,18 +57,18 @@
     <text x="442.66666666666663" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 29</text>
     <text x="640" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 30</text>
 
-  <path d="M48.0,217.7 C80.9,204.2 179.6,156.9 245.3,136.9 C311.1,116.8 376.9,110.7 442.7,97.3 C508.4,83.9 607.1,63.4 640.0,56.6 L640.0,220.0 L48.0,220.0 Z" fill="url(#areaGrad)"/>
+  <path d="M48.0,217.7 C80.9,204.2 179.6,156.9 245.3,136.9 C311.1,116.8 376.9,110.6 442.7,97.3 C508.4,84.0 607.1,63.9 640.0,57.2 L640.0,220.0 L48.0,220.0 Z" fill="url(#areaGrad)"/>
   <path d="M48.0,218.3 C80.9,205.0 179.6,157.6 245.3,138.6 C311.1,119.6 376.9,115.5 442.7,104.2 C508.4,92.9 607.1,76.5 640.0,70.9" fill="none" class="line-openvsx" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M48.0,219.4 C80.9,219.2 179.6,219.3 245.3,218.3 C311.1,217.2 376.9,215.2 442.7,213.1 C508.4,211.0 607.1,206.9 640.0,205.7" fill="none" class="line-vscode" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M48.0,217.7 C80.9,204.2 179.6,156.9 245.3,136.9 C311.1,116.8 376.9,110.7 442.7,97.3 C508.4,83.9 607.1,63.4 640.0,56.6" fill="none" class="line-total" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48.0,219.4 C80.9,219.2 179.6,219.3 245.3,218.3 C311.1,217.2 376.9,215.1 442.7,213.1 C508.4,211.1 607.1,207.4 640.0,206.2" fill="none" class="line-vscode" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48.0,217.7 C80.9,204.2 179.6,156.9 245.3,136.9 C311.1,116.8 376.9,110.6 442.7,97.3 C508.4,84.0 607.1,63.9 640.0,57.2" fill="none" class="line-total" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <circle cx="640" cy="56.599999999999994" r="4.5" class="dot-total" stroke-width="2"/>
-    <text x="658" y="60.599999999999994" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Total</text>
-    <text x="697" y="60.599999999999994" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">285</text>
+  <circle cx="640" cy="57.173333333333346" r="4.5" class="dot-total" stroke-width="2"/>
+    <text x="658" y="61.173333333333346" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Total</text>
+    <text x="697" y="61.173333333333346" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">284</text>
     <circle cx="640" cy="70.93333333333334" r="3.5" class="dot-openvsx" stroke-width="1.8"/>
-    <text x="658" y="78.6" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Open VSX</text>
-    <text x="716.8" y="78.6" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">260</text>
-    <circle cx="640" cy="205.66666666666666" r="3.5" class="dot-vscode" stroke-width="1.8"/>
-    <text x="658" y="209.66666666666666" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">VS Code</text>
-    <text x="710.2" y="209.66666666666666" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">25</text>
+    <text x="658" y="79.17333333333335" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Open VSX</text>
+    <text x="716.8" y="79.17333333333335" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">260</text>
+    <circle cx="640" cy="206.24" r="3.5" class="dot-vscode" stroke-width="1.8"/>
+    <text x="658" y="210.24" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">VS Code</text>
+    <text x="710.2" y="210.24" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">24</text>
 </svg>
