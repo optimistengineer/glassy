@@ -4,25 +4,19 @@
     <line x1="56" y1="192" x2="696" y2="192" stroke="#21262d" stroke-width="1"/>
     <text x="48" y="196" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">0</text>
   
-    <line x1="56" y1="152" x2="696" y2="152" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="156" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">10</text>
+    <line x1="56" y1="151.72413793103448" x2="696" y2="151.72413793103448" stroke="#21262d" stroke-width="1"/>
+    <text x="48" y="155.72413793103448" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">73</text>
   
     <line x1="56" y1="112" x2="696" y2="112" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="116" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">20</text>
+    <text x="48" y="116" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">145</text>
   
-    <line x1="56" y1="72" x2="696" y2="72" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="76" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">30</text>
+    <line x1="56" y1="71.72413793103449" x2="696" y2="71.72413793103449" stroke="#21262d" stroke-width="1"/>
+    <text x="48" y="75.72413793103449" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">218</text>
   
     <line x1="56" y1="32" x2="696" y2="32" stroke="#21262d" stroke-width="1"/>
-    <text x="48" y="36" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">40</text>
+    <text x="48" y="36" fill="#8b949e" font-size="11" text-anchor="end" font-family="monospace">290</text>
   
-  <text x="56" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-24</text>
-  <text x="162.66666666666666" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-25</text>
-  <text x="269.3333333333333" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-26</text>
-  <text x="376" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-27</text>
-  <text x="482.66666666666663" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-28</text>
-  <text x="589.3333333333334" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-29</text>
-  <text x="696" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-30</text>
+  <text x="376" y="232" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">03-30</text>
   
     <rect x="56" y="8" width="10" height="3" rx="1" fill="#f0f6fc"/>
     <text x="70" y="13" fill="#8b949e" font-size="10" font-family="monospace">Total</text>
@@ -31,13 +25,13 @@
     <rect x="186" y="8" width="10" height="3" rx="1" fill="#3fb950"/>
     <text x="200" y="13" fill="#8b949e" font-size="10" font-family="monospace">OpenVSX</text>
   
-  <path d="M56.0,152.0 L162.7,132.0 L269.3,108.0 L376.0,88.0 L482.7,68.0 L589.3,52.0 L696.0,32.0" fill="none" stroke="#f0f6fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M56.0,160.0 L162.7,144.0 L269.3,128.0 L376.0,112.0 L482.7,96.0 L589.3,84.0 L696.0,68.0" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
-  <path d="M56.0,184.0 L162.7,180.0 L269.3,172.0 L376.0,168.0 L482.7,164.0 L589.3,160.0 L696.0,156.0" fill="none" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
+  <path d="M376.0,35.9" fill="none" stroke="#f0f6fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M376.0,179.3" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
+  <path d="M376.0,48.6" fill="none" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
   
-    <circle cx="696" cy="32" r="3" fill="#f0f6fc"/>
-    <text x="702" y="36" fill="#f0f6fc" font-size="11" font-family="monospace" font-weight="bold">40</text>
-    <circle cx="696" cy="68" r="2.5" fill="#58a6ff"/>
-    <circle cx="696" cy="156" r="2.5" fill="#3fb950"/>
+    <circle cx="376" cy="35.86206896551724" r="3" fill="#f0f6fc"/>
+    <text x="382" y="39.86206896551724" fill="#f0f6fc" font-size="11" font-family="monospace" font-weight="bold">283</text>
+    <circle cx="376" cy="179.31034482758622" r="2.5" fill="#58a6ff"/>
+    <circle cx="376" cy="48.551724137931046" r="2.5" fill="#3fb950"/>
   
 </svg>
