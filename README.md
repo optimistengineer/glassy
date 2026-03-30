@@ -21,15 +21,15 @@ Glassy is designed to keep the editor usable while adding a soft glass effect ov
 
 ### Dark wallpaper
 
-<img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/resources/preview-1.png" alt="Glassy preview on a dark workspace" width="100%" />
+<img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-1.png" alt="Glassy preview on a dark workspace" width="100%" />
 
 ### Ambient background
 
-<img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/resources/preview-3.png" alt="Glassy preview with a subtle ambient background" width="100%" />
+<img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-3.png" alt="Glassy preview with a subtle ambient background" width="100%" />
 
 ### Bright high-contrast background
 
-<img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/resources/preview-4.png" alt="Glassy preview on a bright high-contrast background" width="100%" />
+<img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-4.png" alt="Glassy preview on a bright high-contrast background" width="100%" />
 
 ## Setup
 

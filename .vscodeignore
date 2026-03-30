@@ -11,6 +11,5 @@ esbuild.js
 .claude/**
 *.glassy-backup
 *.tmp
-assets/
-resources/**
-!resources/icon.png
+assets/**
+!assets/icon.png
