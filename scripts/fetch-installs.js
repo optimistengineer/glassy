@@ -31,10 +31,9 @@ async function fetchVSCodeMarketplace() {
     const data = await res.json();
     const ext = data?.results?.[0]?.extensions?.[0];
     if (!ext) return 0;
-
-    const installs = ext.statistics?.find(s => s.statisticName === 'install')?.value ?? 0;
-    const updates = ext.statistics?.find(s => s.statisticName === 'updateCount')?.value ?? 0;
-    return Math.round(installs + updates);
+    
+    const downloads = ext.statistics?.find(s => s.statisticName === 'downloadCount')?.value ?? 0;
+    return Math.round(downloads);
   } catch (err) {
     console.error('VS Code Marketplace fetch failed:', err.message);
     return null;
