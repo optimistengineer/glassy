@@ -91,6 +91,9 @@ This removes the patch and restores VS Code to its original state before the ext
 - Glassy attempts to re-apply the patch automatically after VS Code updates, but some updates may still require a manual restart
 - Transparency applies to the entire window including text content
 
+## Install Stats
+![Installs](assets/installs-chart.svg)
+
 ## License
 
 [MIT](LICENSE)
