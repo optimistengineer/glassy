@@ -13,3 +13,4 @@ esbuild.js
 *.tmp
 assets/**
 !assets/icon.png
+docs/**

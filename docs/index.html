@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassy — Glass frame for VS Code on macOS</title>
+  <meta name="description" content="Adjustable window transparency for VS Code, Cursor, and other Electron-based editors on macOS.">
+  <meta name="theme-color" content="#0d0d12" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/icon.png" type="image/png">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-subtle: #f8f8fa;
+      --text: #1a1a2e;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #e8553d;
+      --accent-soft: rgba(232, 85, 61, 0.08);
+      --code-bg: #f3f4f6;
+      --kbd-bg: #f3f4f6;
+      --kbd-border: #d1d5db;
+      --card-bg: #ffffff;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 24px rgba(0,0,0,0.04);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d0d12;
+        --bg-subtle: #161620;
+        --text: #e2e2e8;
+        --text-muted: #8b949e;
+        --border: #2d2d3d;
+        --accent: #ff9b85;
+        --accent-soft: rgba(255, 155, 133, 0.08);
+        --code-bg: #1c1c28;
+        --kbd-bg: #1c1c28;
+        --kbd-border: #3d3d4d;
+        --card-bg: #161620;
+        --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 24px rgba(0,0,0,0.15);
+      }
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body { overflow-x: hidden; }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .hero-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-badges img { height: 24px; }
+
+    /* ---- Sections ---- */
+    section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    section h2 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    /* ---- Features ---- */
+    .features-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .feature-row:last-child { border-bottom: none; }
+
+    .feature-num {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.35;
+      padding-top: 2px;
+    }
+
+    .feature-row h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-row h3 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .feature-row p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      max-width: 520px;
+    }
+
+    /* ---- Preview gallery ---- */
+    .preview-gallery {
+      display: grid;
+      gap: 20px;
+    }
+
+    .preview-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+    }
+
+    .preview-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .preview-item figcaption {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: var(--card-bg);
+    }
+
+    /* ---- Setup steps ---- */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .steps li span { padding-top: 4px; }
+
+    /* ---- Shortcuts ---- */
+    .shortcuts-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .shortcuts-table th,
+    .shortcuts-table td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shortcuts-table th {
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    kbd {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 12px;
+      font-family: inherit;
+      background: var(--kbd-bg);
+      border: 1px solid var(--kbd-border);
+      border-radius: 5px;
+      line-height: 1.6;
+    }
+
+    /* ---- Settings ---- */
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+
+    .setting-row:last-child { border-bottom: none; }
+
+    .setting-name {
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 13px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .setting-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .setting-default {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ---- Chart ---- */
+    .chart-section img {
+      width: 100%;
+      max-width: 760px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 600px) {
+      .hero { padding: 56px 0 40px; }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      section { padding: 40px 0; }
+      section h2 { font-size: 20px; }
+      .setting-row { flex-direction: column; gap: 4px; }
+      .setting-desc { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+      <img class="hero-icon" src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/icon.png" alt="Glassy icon">
+      <h1>Glassy</h1>
+      <p>Adjustable window transparency for VS Code on macOS. Keep your editor readable while your wallpaper subtly comes through.</p>
+      <div class="hero-badges">
+        <a href="https://marketplace.visualstudio.com/items?itemName=optimistengineer.glassy"><img src="https://img.shields.io/visual-studio-marketplace/v/optimistengineer.glassy?label=VS%20Code%20Marketplace&logo=visualstudiocode" alt="VS Code Marketplace"></a>
+        <a href="https://open-vsx.org/extension/optimistengineer/glassy"><img src="https://img.shields.io/open-vsx/v/optimistengineer/glassy?label=Open%20VSX&logo=eclipse" alt="Open VSX"></a>
+        <a href="https://github.com/optimistengineer/glassy"><img src="https://img.shields.io/badge/GitHub-optimistengineer%2Fglassy-181717?logo=github" alt="GitHub"></a>
+      </div>
+    </header>
+
+    <!-- Preview -->
+    <section>
+      <h2>Preview</h2>
+      <div class="preview-gallery">
+        <figure class="preview-item">
+          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-1.png" alt="Glassy on a dark workspace" loading="lazy">
+          <figcaption>Dark wallpaper</figcaption>
+        </figure>
+        <figure class="preview-item">
+          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-3.png" alt="Glassy with an ambient background" loading="lazy">
+          <figcaption>Ambient background</figcaption>
+        </figure>
+        <figure class="preview-item">
+          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-4.png" alt="Glassy on a bright high-contrast background" loading="lazy">
+          <figcaption>Bright high-contrast background</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section>
+      <h2>Features</h2>
+      <div class="features-list">
+        <div class="feature-row">
+          <span class="feature-num">01</span>
+          <div>
+            <h3>Adjust opacity <em>without leaving your editor</em></h3>
+            <p>Three keyboard shortcuts let you increase, decrease, or reset window transparency instantly. No menus, no dialogs.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="feature-num">02</span>
+          <div>
+            <h3>Dial in <em>exactly the right level</em></h3>
+            <p>Set your preferred opacity and step size in VS Code Settings. Go from a subtle hint of your wallpaper to full see-through.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="feature-num">03</span>
+          <div>
+            <h3>Survives <em>most VS Code updates</em></h3>
+            <p>Glassy detects when the editor updates and re-applies the transparency patch automatically. One less thing to think about.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="feature-num">04</span>
+          <div>
+            <h3>Works across <em>five editors</em></h3>
+            <p>VS Code, Insiders, Cursor, VSCodium, and Antigravity. Glassy finds the running app automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Setup -->
+    <section>
+      <h2>Setup</h2>
+      <ol class="steps">
+        <li><span>Open the Command Palette (<kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>)</span></li>
+        <li><span>Run <strong>"Glassy: Enable Transparency"</strong></span></li>
+        <li><span>Confirm the prompt</span></li>
+        <li><span>Restart VS Code when prompted, or <strong>Quit</strong> (<kbd>Cmd</kbd> + <kbd>Q</kbd>) and reopen</span></li>
+      </ol>
+    </section>
+
+    <!-- Shortcuts -->
+    <section>
+      <h2>Keyboard Shortcuts</h2>
+      <table class="shortcuts-table">
+        <thead>
+          <tr><th>Shortcut</th><th>Command</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>Z</kbd></td><td>Increase opacity (less transparent)</td></tr>
+          <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>C</kbd></td><td>Decrease opacity (more transparent)</td></tr>
+          <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>X</kbd></td><td>Reset to fully opaque</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Settings -->
+    <section>
+      <h2>Settings</h2>
+      <div>
+        <div class="setting-row">
+          <span class="setting-name">glassy.alpha</span>
+          <span class="setting-desc">Opacity level (10 = very transparent, 255 = fully opaque). Default: <span class="setting-default">240</span></span>
+        </div>
+        <div class="setting-row">
+          <span class="setting-name">glassy.step</span>
+          <span class="setting-desc">Step size per keypress. Default: <span class="setting-default">4</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Install Stats -->
+    <section class="chart-section">
+      <h2>Install Stats</h2>
+      <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/installs-chart.svg" alt="Glassy install history chart">
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <a href="https://github.com/optimistengineer/glassy">Glassy</a> is open source under the <a href="https://github.com/optimistengineer/glassy/blob/main/LICENSE">MIT License</a>.
+    </div>
+  </footer>
+
+</body>
+</html>

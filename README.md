@@ -7,6 +7,7 @@ Glassy adds adjustable window transparency so your editor stays readable while y
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/optimistengineer.glassy?label=VS%20Code%20Marketplace&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=optimistengineer.glassy)
 [![Open VSX](https://img.shields.io/open-vsx/v/optimistengineer/glassy?label=Open%20VSX&logo=eclipse)](https://open-vsx.org/extension/optimistengineer/glassy)
 [![GitHub](https://img.shields.io/badge/GitHub-optimistengineer%2Fglassy-181717?logo=github)](https://github.com/optimistengineer/glassy)
+[![Website](https://img.shields.io/badge/Website-optimistengineer.github.io%2Fglassy-e8553d)](https://optimistengineer.github.io/glassy/)
 
 ## Features
 
