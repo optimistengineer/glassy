@@ -2,7 +2,7 @@
   "name": "glassy",
   "displayName": "Glassy",
   "description": "Glass frame for VS Code on macOS",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "icon": "assets/icon.png",
   "publisher": "optimistengineer",
   "license": "MIT",
@@ -63,6 +63,10 @@
       {
         "command": "glassy.minimize",
         "title": "Glassy: Reset to Opaque"
+      },
+      {
+        "command": "glassy.toggleAutoRestart",
+        "title": "Glassy: Toggle Auto-Restart on Update"
       }
     ],
     "keybindings": [
@@ -98,6 +102,11 @@
           "minimum": 1,
           "maximum": 50,
           "description": "Step size for opacity increase/decrease"
+        },
+        "glassy.autoRestartAfterUpdate": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically restart VS Code after an update to re-apply the transparency patch without prompting"
         }
       }
     }

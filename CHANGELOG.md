@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.4
+
+- Added `glassy.autoRestartAfterUpdate` setting to automatically restart VS Code after an update without prompting
+- Added "Glassy: Toggle Auto-Restart on Update" command to the Command Palette
+
 ## 0.1.3
 
 - Added Windsurf editor support

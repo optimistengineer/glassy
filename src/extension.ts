@@ -251,14 +251,21 @@ export function activate(context: vscode.ExtensionContext) {
 
         if (result.success) {
             writeConfigSafe(currentAlpha, 'post-update repatch');
-            vscode.window.showInformationMessage(
-                'Glassy: VS Code was updated. Patch re-applied. A restart is required for window transparency.',
-                'Restart Now', 'Later'
-            ).then(choice => {
-                if (choice === 'Restart Now') {
-                    void restartVSCode();
-                }
-            });
+            
+            const autoRestart = vscode.workspace.getConfiguration('glassy').get<boolean>('autoRestartAfterUpdate', false);
+            if (autoRestart) {
+                safeAppendLine('Auto-restarting after VS Code update...');
+                void restartVSCode();
+            } else {
+                vscode.window.showInformationMessage(
+                    'Glassy: VS Code was updated. Patch re-applied. A restart is required for window transparency.',
+                    'Restart Now', 'Later'
+                ).then(choice => {
+                    if (choice === 'Restart Now') {
+                        void restartVSCode();
+                    }
+                });
+            }
         } else {
             vscode.window.showErrorMessage(`Glassy: Failed to re-apply patch after update — ${result.message}`);
         }
@@ -340,6 +347,18 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand('glassy.minimize', () => {
             currentAlpha = 255;
             applyAlpha();
+        }),
+        vscode.commands.registerCommand('glassy.toggleAutoRestart', () => {
+            const config = vscode.workspace.getConfiguration('glassy');
+            const currentValue = config.get<boolean>('autoRestartAfterUpdate', false);
+            const newValue = !currentValue;
+            
+            config.update('autoRestartAfterUpdate', newValue, vscode.ConfigurationTarget.Global).then(() => {
+                const message = newValue 
+                    ? 'Glassy: Auto-restart on update is now ENABLED.' 
+                    : 'Glassy: Auto-restart on update is now DISABLED.';
+                vscode.window.showInformationMessage(message);
+            });
         })
     );
 

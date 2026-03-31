@@ -53,6 +53,7 @@ You can also:
 
 - adjust opacity in **Settings > Glassy**
 - run **"Glassy: Maximum Transparency"** from the Command Palette to jump to the lowest supported opacity
+- run **"Glassy: Toggle Auto-Restart on Update"** to enable or disable automatic restarts after VS Code updates
 - run **"Glassy: Disable Transparency"** to remove the patch and restore the normal window
 
 ## Settings
@@ -61,6 +62,7 @@ You can also:
 |---------|---------|-------------|
 | `glassy.alpha` | `240` | Opacity level (10 = very transparent, 255 = fully opaque) |
 | `glassy.step` | `4` | Step size per keypress |
+| `glassy.autoRestartAfterUpdate` | `false` | Automatically restart VS Code after an update without prompting |
 
 ### Recommended Values
 
