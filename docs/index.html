@@ -1,44 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="opacity:0">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Glassy — Glass frame for VS Code on macOS</title>
   <meta name="description" content="Adjustable window transparency for VS Code, Cursor, and other Electron-based editors on macOS.">
-  <meta name="theme-color" content="#0d0d12" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#f6f6f9" id="theme-color-meta">
   <link rel="icon" href="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/icon.png" type="image/png">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('glassy-site-theme');
+        var h = document.documentElement;
+        if (t === 'light') h.setAttribute('data-theme', 'light');
+        else if (t === 'dark') h.setAttribute('data-theme', 'dark');
+        else h.setAttribute('data-theme', 'system');
+      } catch (e) {}
+    })();
+  </script>
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-subtle: #f8f8fa;
+      --bg: #f6f6f9;
+      --bg-subtle: #f0f0f4;
       --text: #1a1a2e;
       --text-muted: #6b7280;
-      --border: #e5e7eb;
+      --border: rgba(0, 0, 0, 0.06);
       --accent: #e8553d;
       --accent-soft: rgba(232, 85, 61, 0.08);
       --code-bg: #f3f4f6;
-      --kbd-bg: #f3f4f6;
-      --kbd-border: #d1d5db;
-      --card-bg: #ffffff;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 24px rgba(0,0,0,0.04);
+      --kbd-bg: rgba(255, 255, 255, 0.7);
+      --kbd-border: rgba(0, 0, 0, 0.1);
+      --card-bg: rgba(255, 255, 255, 0.55);
+      --card-border: rgba(255, 255, 255, 0.6);
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.03);
+      --glass-blur: 16px;
+      --orb-1: rgba(232, 85, 61, 0.12);
+      --orb-2: rgba(91, 124, 250, 0.10);
+      --orb-3: rgba(52, 199, 160, 0.08);
+      --theme-toggle-surface: rgba(255, 255, 255, 0.75);
+      --theme-toggle-surface-hover: rgba(255, 255, 255, 0.92);
+      --theme-toggle-ring: rgba(0, 0, 0, 0.07);
+      --theme-toggle-ring-hover: rgba(0, 0, 0, 0.11);
+      --theme-toggle-icon: rgba(52, 58, 76, 0.78);
+      --theme-toggle-icon-hover: rgba(32, 36, 48, 0.92);
+      --theme-toggle-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
     }
 
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0d0d12;
-        --bg-subtle: #161620;
+      html:not([data-theme]),
+      html[data-theme="system"] {
+        --bg: #0b0b10;
+        --bg-subtle: #12121a;
         --text: #e2e2e8;
         --text-muted: #8b949e;
-        --border: #2d2d3d;
+        --border: rgba(255, 255, 255, 0.06);
         --accent: #ff9b85;
         --accent-soft: rgba(255, 155, 133, 0.08);
         --code-bg: #1c1c28;
-        --kbd-bg: #1c1c28;
-        --kbd-border: #3d3d4d;
-        --card-bg: #161620;
-        --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 24px rgba(0,0,0,0.15);
+        --kbd-bg: rgba(255, 255, 255, 0.06);
+        --kbd-border: rgba(255, 255, 255, 0.08);
+        --card-bg: rgba(255, 255, 255, 0.04);
+        --card-border: rgba(255, 255, 255, 0.06);
+        --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.12);
+        --glass-blur: 20px;
+        --orb-1: rgba(255, 155, 133, 0.08);
+        --orb-2: rgba(141, 164, 255, 0.07);
+        --orb-3: rgba(94, 234, 212, 0.05);
+        --theme-toggle-surface: rgba(255, 255, 255, 0.1);
+        --theme-toggle-surface-hover: rgba(255, 255, 255, 0.16);
+        --theme-toggle-ring: rgba(255, 255, 255, 0.18);
+        --theme-toggle-ring-hover: rgba(255, 255, 255, 0.28);
+        --theme-toggle-icon: rgba(255, 255, 255, 0.95);
+        --theme-toggle-icon-hover: #fff;
+        --theme-toggle-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
       }
+    }
+
+    html[data-theme="dark"] {
+      --bg: #0b0b10;
+      --bg-subtle: #12121a;
+      --text: #e2e2e8;
+      --text-muted: #8b949e;
+      --border: rgba(255, 255, 255, 0.06);
+      --accent: #ff9b85;
+      --accent-soft: rgba(255, 155, 133, 0.08);
+      --code-bg: #1c1c28;
+      --kbd-bg: rgba(255, 255, 255, 0.06);
+      --kbd-border: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.12);
+      --glass-blur: 20px;
+      --orb-1: rgba(255, 155, 133, 0.08);
+      --orb-2: rgba(141, 164, 255, 0.07);
+      --orb-3: rgba(94, 234, 212, 0.05);
+      --theme-toggle-surface: rgba(255, 255, 255, 0.1);
+      --theme-toggle-surface-hover: rgba(255, 255, 255, 0.16);
+      --theme-toggle-ring: rgba(255, 255, 255, 0.18);
+      --theme-toggle-ring-hover: rgba(255, 255, 255, 0.28);
+      --theme-toggle-icon: rgba(255, 255, 255, 0.95);
+      --theme-toggle-icon-hover: #fff;
+      --theme-toggle-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,9 +112,25 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       scroll-behavior: smooth;
+      transition: opacity 0.08s ease-in;
     }
 
-    body { overflow-x: hidden; }
+    body {
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 600px 500px at 15% 10%, var(--orb-1), transparent),
+        radial-gradient(ellipse 500px 600px at 85% 30%, var(--orb-2), transparent),
+        radial-gradient(ellipse 400px 400px at 50% 70%, var(--orb-3), transparent);
+      filter: blur(60px);
+    }
 
     .container {
       max-width: 820px;
@@ -64,6 +142,7 @@
     .hero {
       padding: 80px 0 60px;
       text-align: center;
+      position: relative;
     }
 
     .hero-icon {
@@ -71,6 +150,18 @@
       height: 72px;
       border-radius: 18px;
       margin-bottom: 24px;
+      box-shadow: 0 4px 24px rgba(232, 85, 61, 0.2);
+    }
+
+    html[data-theme="dark"] .hero-icon {
+      box-shadow: 0 4px 24px rgba(255, 155, 133, 0.15);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme]) .hero-icon,
+      html[data-theme="system"] .hero-icon {
+        box-shadow: 0 4px 24px rgba(255, 155, 133, 0.15);
+      }
     }
 
     .hero h1 {
@@ -101,6 +192,17 @@
     section {
       padding: 56px 0;
       border-top: 1px solid var(--border);
+    }
+
+    /* ---- Glass panels ---- */
+    .glass-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      backdrop-filter: blur(var(--glass-blur));
+      box-shadow: var(--card-shadow);
     }
 
     section h2 {
@@ -163,9 +265,12 @@
     }
 
     .preview-item {
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      backdrop-filter: blur(var(--glass-blur));
       box-shadow: var(--card-shadow);
     }
 
@@ -178,7 +283,6 @@
       padding: 12px 16px;
       font-size: 13px;
       color: var(--text-muted);
-      background: var(--card-bg);
     }
 
     /* ---- Setup steps ---- */
@@ -277,12 +381,26 @@
     }
 
     /* ---- Chart ---- */
-    .chart-section img {
+    .chart-section svg {
       width: 100%;
       max-width: 760px;
       display: block;
       margin: 0 auto;
     }
+    .chart-section .chart-title    { fill: var(--text); font-size: 15px; font-weight: 600; }
+    .chart-section .chart-subtitle { fill: var(--text-muted); font-size: 11px; font-weight: 400; }
+    .chart-section .chart-grid     { stroke: var(--border); }
+    .chart-section .chart-axis     { fill: var(--text-muted); font-size: 10px; }
+    .chart-section .chart-end-label { fill: var(--text); font-size: 11px; font-weight: 600; }
+    .chart-section .chart-end-value { fill: var(--text-muted); font-size: 11px; font-weight: 400; }
+    .chart-section .line-total   { stroke: #e8553d; }
+    .chart-section .line-vscode  { stroke: #5b7cfa; }
+    .chart-section .line-openvsx { stroke: #34c7a0; }
+    .chart-section .dot-total    { fill: transparent; stroke: #e8553d; }
+    .chart-section .dot-vscode   { fill: transparent; stroke: #5b7cfa; }
+    .chart-section .dot-openvsx  { fill: transparent; stroke: #34c7a0; }
+    .chart-section .area-total-top    { stop-color: #e8553d; }
+    .chart-section .area-total-bottom { stop-color: #e8553d; }
 
     /* ---- Footer ---- */
     footer {
@@ -291,6 +409,9 @@
       text-align: center;
       font-size: 13px;
       color: var(--text-muted);
+      background: var(--card-bg);
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      backdrop-filter: blur(var(--glass-blur));
     }
 
     footer a {
@@ -300,19 +421,130 @@
 
     footer a:hover { text-decoration: underline; }
 
+    /* ---- Theme toggle (premium) ---- */
+    .theme-toggle-wrap {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 200;
+    }
+
+    .theme-toggle {
+      appearance: none;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border: 1px solid var(--theme-toggle-ring);
+      border-radius: 50%;
+      background: var(--theme-toggle-surface);
+      color: var(--theme-toggle-icon);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-backdrop-filter: blur(12px) saturate(1.8);
+      backdrop-filter: blur(12px) saturate(1.8);
+      box-shadow: var(--theme-toggle-shadow), inset 0 0.5px 0 rgba(255,255,255,0.1);
+      transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.35s ease, transform 0.25s cubic-bezier(.4,0,.2,1);
+    }
+
+    .theme-toggle:hover {
+      color: var(--theme-toggle-icon-hover);
+      background: var(--theme-toggle-surface-hover);
+      border-color: var(--theme-toggle-ring-hover);
+      box-shadow: var(--theme-toggle-shadow), 0 0 0 4px var(--accent-soft), 0 0 16px var(--accent-soft), inset 0 0.5px 0 rgba(255,255,255,0.12);
+      transform: scale(1.08);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.94);
+      transition-duration: 0.1s;
+    }
+
+    .theme-toggle:focus {
+      outline: none;
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle .theme-icon {
+      display: none;
+    }
+
+    .theme-toggle[data-mode="light"] .theme-icon--light,
+    .theme-toggle[data-mode="dark"] .theme-icon--dark,
+    .theme-toggle[data-mode="system"] .theme-icon--system {
+      display: block;
+    }
+
+    @keyframes toggle-morph {
+      0%   { transform: rotate(0deg) scale(1); opacity: 1; }
+      35%  { transform: rotate(160deg) scale(0.65); opacity: 0.3; }
+      100% { transform: rotate(360deg) scale(1); opacity: 1; }
+    }
+
+    .theme-toggle.is-animating svg {
+      animation: toggle-morph 0.45s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .theme-toggle.is-animating svg { animation: none; }
+      .theme-toggle { transition-duration: 0.01s; }
+    }
+
     /* ---- Responsive ---- */
     @media (max-width: 600px) {
-      .hero { padding: 56px 0 40px; }
+      .hero { padding: 72px 0 40px; }
       .hero h1 { font-size: 32px; }
       .hero p { font-size: 16px; }
       section { padding: 40px 0; }
       section h2 { font-size: 20px; }
       .setting-row { flex-direction: column; gap: 4px; }
       .setting-desc { text-align: left; }
+      .theme-toggle-wrap { top: 10px; right: 10px; }
+      .theme-toggle { width: 42px; height: 42px; }
+      .theme-toggle svg { width: 20px; height: 20px; }
     }
   </style>
+  <script>document.documentElement.style.opacity='1';</script>
 </head>
 <body>
+
+  <div class="theme-toggle-wrap">
+    <button type="button" class="theme-toggle" id="theme-toggle" data-mode="system" aria-label="Color theme">
+      <svg class="theme-icon theme-icon--light" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.15"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+        <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M12 2v3"/><path d="M12 19v3"/>
+          <path d="M2 12h3"/><path d="M19 12h3"/>
+          <path d="M4.93 4.93l2.12 2.12"/><path d="M16.95 16.95l2.12 2.12"/>
+          <path d="M19.07 4.93l-2.12 2.12"/><path d="M7.05 16.95l-2.12 2.12"/>
+        </g>
+      </svg>
+      <svg class="theme-icon theme-icon--dark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" fill="currentColor" opacity="0.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="19.5" cy="5.5" r="1" fill="currentColor" opacity="0.7"/>
+        <circle cx="16.5" cy="3" r="0.65" fill="currentColor" opacity="0.5"/>
+      </svg>
+      <svg class="theme-icon theme-icon--system" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3.5" y="4" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 4.75h6.5a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H12V4.75Z" fill="currentColor" opacity="0.12"/>
+        <path d="M12 4.75v11.5" stroke="currentColor" stroke-width="0.75" stroke-dasharray="1.5 1.5" opacity="0.35"/>
+        <path d="M9 19h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M12 16v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
 
   <div class="container">
 
@@ -333,15 +565,15 @@
       <h2>Preview</h2>
       <div class="preview-gallery">
         <figure class="preview-item">
-          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-1.png" alt="Glassy on a dark workspace" loading="lazy">
+          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-1.png" alt="Glassy on a dark workspace" fetchpriority="high" decoding="async">
           <figcaption>Dark wallpaper</figcaption>
         </figure>
         <figure class="preview-item">
-          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-3.png" alt="Glassy with an ambient background" loading="lazy">
+          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-3.png" alt="Glassy with an ambient background" decoding="async">
           <figcaption>Ambient background</figcaption>
         </figure>
         <figure class="preview-item">
-          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-4.png" alt="Glassy on a bright high-contrast background" loading="lazy">
+          <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/preview-4.png" alt="Glassy on a bright high-contrast background" decoding="async">
           <figcaption>Bright high-contrast background</figcaption>
         </figure>
       </div>
@@ -385,33 +617,37 @@
     <!-- Setup -->
     <section>
       <h2>Setup</h2>
-      <ol class="steps">
-        <li><span>Open the Command Palette (<kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>)</span></li>
-        <li><span>Run <strong>"Glassy: Enable Transparency"</strong></span></li>
-        <li><span>Confirm the prompt</span></li>
-        <li><span>Restart VS Code when prompted, or <strong>Quit</strong> (<kbd>Cmd</kbd> + <kbd>Q</kbd>) and reopen</span></li>
-      </ol>
+      <div class="glass-panel">
+        <ol class="steps">
+          <li><span>Open the Command Palette (<kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>)</span></li>
+          <li><span>Run <strong>"Glassy: Enable Transparency"</strong></span></li>
+          <li><span>Confirm the prompt</span></li>
+          <li><span>Restart VS Code when prompted, or <strong>Quit</strong> (<kbd>Cmd</kbd> + <kbd>Q</kbd>) and reopen</span></li>
+        </ol>
+      </div>
     </section>
 
     <!-- Shortcuts -->
     <section>
       <h2>Keyboard Shortcuts</h2>
-      <table class="shortcuts-table">
-        <thead>
-          <tr><th>Shortcut</th><th>Command</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>Z</kbd></td><td>Increase opacity (less transparent)</td></tr>
-          <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>C</kbd></td><td>Decrease opacity (more transparent)</td></tr>
-          <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>X</kbd></td><td>Reset to fully opaque</td></tr>
-        </tbody>
-      </table>
+      <div class="glass-panel">
+        <table class="shortcuts-table">
+          <thead>
+            <tr><th>Shortcut</th><th>Command</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>Z</kbd></td><td>Increase opacity (less transparent)</td></tr>
+            <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>C</kbd></td><td>Decrease opacity (more transparent)</td></tr>
+            <tr><td><kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>X</kbd></td><td>Reset to fully opaque</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <!-- Settings -->
     <section>
       <h2>Settings</h2>
-      <div>
+      <div class="glass-panel">
         <div class="setting-row">
           <span class="setting-name">glassy.alpha</span>
           <span class="setting-desc">Opacity level (10 = very transparent, 255 = fully opaque). Default: <span class="setting-default">240</span></span>
@@ -426,7 +662,7 @@
     <!-- Install Stats -->
     <section class="chart-section">
       <h2>Install Stats</h2>
-      <img src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/installs-chart.svg" alt="Glassy install history chart">
+      <div id="chart-container" aria-label="Glassy install history chart"></div>
     </section>
 
   </div>
@@ -436,6 +672,129 @@
       <a href="https://github.com/optimistengineer/glassy">Glassy</a> is open source under the <a href="https://github.com/optimistengineer/glassy/blob/main/LICENSE">MIT License</a>.
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var KEY = 'glassy-site-theme';
+      var ORDER = ['light', 'dark', 'system'];
+      var LABELS = { light: 'Light', dark: 'Dark', system: 'System' };
+      var html = document.documentElement;
+      var meta = document.getElementById('theme-color-meta');
+      var toggle = document.getElementById('theme-toggle');
+
+      function storedTheme() {
+        try {
+          var v = localStorage.getItem(KEY);
+          if (v === 'light' || v === 'dark' || v === 'system') return v;
+        } catch (e) {}
+        return 'system';
+      }
+
+      function resolvedDark() {
+        var t = html.getAttribute('data-theme');
+        if (t === 'light') return false;
+        if (t === 'dark') return true;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      function syncMeta() {
+        if (!meta) return;
+        meta.content = resolvedDark() ? '#0d0d12' : '#f6f6f9';
+      }
+
+      function apply(theme) {
+        if (theme === 'light') html.setAttribute('data-theme', 'light');
+        else if (theme === 'dark') html.setAttribute('data-theme', 'dark');
+        else html.setAttribute('data-theme', 'system');
+        try {
+          localStorage.setItem(KEY, theme);
+        } catch (e) {}
+        if (toggle) {
+          toggle.setAttribute('data-mode', theme);
+          toggle.setAttribute(
+            'aria-label',
+            'Color theme: ' +
+              LABELS[theme] +
+              '. Click to switch to ' +
+              LABELS[ORDER[(ORDER.indexOf(theme) + 1) % ORDER.length]] +
+              '.'
+          );
+          toggle.title = LABELS[theme] + ' — click for next';
+        }
+        syncMeta();
+      }
+
+      apply(storedTheme());
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          toggle.classList.remove('is-animating');
+          void toggle.offsetWidth;
+          toggle.classList.add('is-animating');
+          var cur = storedTheme();
+          var i = ORDER.indexOf(cur);
+          apply(ORDER[(i + 1) % ORDER.length]);
+        });
+        toggle.addEventListener('animationend', function () {
+          toggle.classList.remove('is-animating');
+        });
+      }
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+        if (storedTheme() === 'system') syncMeta();
+      });
+    })();
+  </script>
+
+  <script>
+    /* Fetch the auto-generated chart SVG, strip its internal style (which
+       follows OS dark-mode, not our data-theme), remap its class names to
+       our page CSS classes, and inject it inline so it themes correctly. */
+    (function () {
+      var CHART_URL =
+        'https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/installs-chart.svg';
+      var container = document.getElementById('chart-container');
+      if (!container) return;
+
+      var CLASS_MAP = {
+        title: 'chart-title',
+        subtitle: 'chart-subtitle',
+        grid: 'chart-grid',
+        'axis-label': 'chart-axis',
+        'end-label': 'chart-end-label',
+        'end-value': 'chart-end-value'
+      };
+
+      fetch(CHART_URL)
+        .then(function (r) { return r.text(); })
+        .then(function (text) {
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(text, 'image/svg+xml');
+          var svg = doc.querySelector('svg');
+          if (!svg) return;
+
+          /* Remove the SVG's internal <style> — the page CSS handles theming */
+          var style = svg.querySelector('style');
+          if (style) style.remove();
+
+          /* Remap class names so the page CSS selectors match */
+          Object.keys(CLASS_MAP).forEach(function (orig) {
+            svg.querySelectorAll('.' + orig).forEach(function (el) {
+              el.classList.remove(orig);
+              el.classList.add(CLASS_MAP[orig]);
+            });
+          });
+
+          container.innerHTML = '';
+          container.appendChild(svg);
+        })
+        .catch(function () {
+          /* Fallback: plain <img> if fetch fails (offline / CORS) */
+          container.innerHTML =
+            '<img src="' + CHART_URL + '" alt="Glassy install history chart">';
+        });
+    })();
+  </script>
 
 </body>
 </html>
