@@ -29,7 +29,8 @@
     "opacity",
     "glass",
     "macos",
-    "window"
+    "window",
+    "vibrancy"
   ],
   "os": [
     "darwin"
