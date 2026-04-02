@@ -96,6 +96,22 @@ async function main() {
 
   fs.writeFileSync(DATA_FILE, JSON.stringify(history, null, 2) + '\n');
   console.log(`Saved ${history.length} data points to ${DATA_FILE}`);
+
+  // Format message to handle thousands
+  const formatNumber = (num) => {
+    return num > 999 ? (num/1000).toFixed(1) + 'k' : num.toString();
+  };
+
+  const badgePath = path.join(dir, 'total-badge.json');
+  const badgeData = {
+    schemaVersion: 1,
+    label: "Total Installs",
+    message: formatNumber(entry.total),
+    color: "e8553d"
+  };
+
+  fs.writeFileSync(badgePath, JSON.stringify(badgeData, null, 2) + '\n');
+  console.log(`Saved shields.io badge data to ${badgePath}`);
 }
 
 main();
