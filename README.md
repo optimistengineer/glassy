@@ -18,6 +18,10 @@ Glassy adds adjustable window transparency so your editor stays readable while y
 
 ## Preview
 
+<video autoplay loop muted playsinline width="100%">
+  <source src="https://raw.githubusercontent.com/optimistengineer/glassy/main/assets/live-demo.mp4" type="video/mp4">
+</video>
+
 Glassy is designed to keep the editor usable while adding a soft glass effect over dark, ambient, or high-contrast backgrounds.
 
 ### Dark wallpaper

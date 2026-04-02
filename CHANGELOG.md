@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+- Significantly reduced extension `.vsix` bundle size by optimizing the logo asset
+- Added an embedded auto-playing live demo video to the README and documentation site
+
 ## 0.1.4
 
 - Added `glassy.autoRestartAfterUpdate` setting to automatically restart VS Code after an update without prompting
