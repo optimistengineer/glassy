@@ -75,10 +75,6 @@ You can also:
 - **220-240** Moderate (text still readable)
 - **Below 200** Heavy (text starts to fade)
 
-## Install Stats
-
-![Installs](assets/installs-chart.svg)
-
 ## How It Works
 
 Glassy patches VS Code's Electron main process to enable `BrowserWindow.setOpacity()`. When you change opacity, the extension writes the new value to a local config file and the patched app applies the update to the current window.
