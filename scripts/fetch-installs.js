@@ -102,16 +102,31 @@ async function main() {
     return num > 999 ? (num/1000).toFixed(1) + 'k' : num.toString();
   };
 
-  const badgePath = path.join(dir, 'total-badge.json');
-  const badgeData = {
+  const totalBadge = {
     schemaVersion: 1,
     label: "Total Installs",
     message: formatNumber(entry.total),
     color: "e8553d"
   };
+  fs.writeFileSync(path.join(dir, 'total-badge.json'), JSON.stringify(totalBadge, null, 2) + '\n');
 
-  fs.writeFileSync(badgePath, JSON.stringify(badgeData, null, 2) + '\n');
-  console.log(`Saved shields.io badge data to ${badgePath}`);
+  const vscodeBadge = {
+    schemaVersion: 1,
+    label: "Marketplace Installs",
+    message: formatNumber(entry.vscode),
+    color: "5b7cfa"
+  };
+  fs.writeFileSync(path.join(dir, 'vscode-badge.json'), JSON.stringify(vscodeBadge, null, 2) + '\n');
+
+  const openvsxBadge = {
+    schemaVersion: 1,
+    label: "Open VSX Downloads",
+    message: formatNumber(entry.openvsx),
+    color: "34c7a0"
+  };
+  fs.writeFileSync(path.join(dir, 'openvsx-badge.json'), JSON.stringify(openvsxBadge, null, 2) + '\n');
+
+  console.log(`Saved shields.io badge data to ${dir}`);
 }
 
 main();
