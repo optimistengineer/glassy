@@ -77,7 +77,8 @@ You can also:
 
 ## Install Stats
 
-[![Total Installs](https://img.shields.io/visual-studio-marketplace/i/optimistengineer.glassy?color=e8553d&label=Total%20Installs&style=flat-square)](https://optimistengineer.github.io/glassy/)
+[![Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/optimistengineer.glassy?color=5b7cfa&label=Marketplace%20Installs&style=flat-square&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=optimistengineer.glassy)
+[![Open VSX Downloads](https://img.shields.io/open-vsx/dt/optimistengineer/glassy?color=34c7a0&label=Open%20VSX%20Downloads&style=flat-square&logo=eclipse)](https://open-vsx.org/extension/optimistengineer/glassy)
 
 *To view the full install history chart, check out our [Documentation Website](https://optimistengineer.github.io/glassy/).*
 
