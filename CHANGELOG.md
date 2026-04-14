@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6
+
+- Fixed extension icon not displaying on Open VSX and compatible editors (Cursor, VSCodium, Antigravity, Windsurf)
+
 ## 0.1.5
 
 - Significantly reduced extension `.vsix` bundle size by optimizing the logo asset
