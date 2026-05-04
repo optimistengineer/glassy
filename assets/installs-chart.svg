@@ -42,7 +42,7 @@
   </defs>
 
   <text x="48" y="22" class="title" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Installs</text>
-  <text x="48" y="37" class="subtitle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Updated May 3</text>
+  <text x="48" y="37" class="subtitle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Updated May 4</text>
 
   <line x1="48" y1="220" x2="640" y2="220" class="grid" stroke-width="0.7"/>
     <text x="40" y="223.5" class="axis-label" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">0</text>
@@ -53,24 +53,24 @@
     <line x1="48" y1="48" x2="640" y2="48" class="grid" stroke-width="0.7"/>
     <text x="40" y="51.5" class="axis-label" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">1.5k</text>
   <text x="48" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 27</text>
-    <text x="196" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 29</text>
-    <text x="270" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 30</text>
-    <text x="418" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Apr 1</text>
-    <text x="492" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Apr 2</text>
-    <text x="640" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">May 3</text>
+    <text x="179.55555555555554" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 29</text>
+    <text x="311.1111111111111" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Mar 31</text>
+    <text x="376.8888888888889" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Apr 1</text>
+    <text x="508.44444444444446" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Apr 30</text>
+    <text x="640" y="248" class="axis-label" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">May 4</text>
 
-  <path d="M48.0,219.5 C60.3,216.8 97.3,207.4 122.0,203.4 C146.7,199.4 171.3,198.1 196.0,195.5 C220.7,192.8 245.3,188.8 270.0,187.4 C294.7,186.0 319.3,189.9 344.0,187.0 C368.7,184.0 393.3,173.2 418.0,169.8 C442.7,166.3 467.3,180.2 492.0,166.3 C516.7,152.5 541.3,100.6 566.0,86.6 C590.7,72.7 627.7,83.2 640.0,82.5 L640.0,220.0 L48.0,220.0 Z" fill="url(#areaGrad)"/>
-  <path d="M48.0,219.7 C60.3,217.0 97.3,207.5 122.0,203.7 C146.7,199.9 171.3,199.1 196.0,196.8 C220.7,194.6 245.3,191.3 270.0,190.2 C294.7,189.1 319.3,192.9 344.0,190.2 C368.7,187.4 393.3,176.9 418.0,173.7 C442.7,170.5 467.3,183.5 492.0,170.9 C516.7,158.3 541.3,111.0 566.0,98.2 C590.7,85.5 627.7,95.2 640.0,94.6" fill="none" class="line-openvsx" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M48.0,219.9 C60.3,219.8 97.3,219.9 122.0,219.7 C146.7,219.4 171.3,219.0 196.0,218.6 C220.7,218.2 245.3,217.6 270.0,217.2 C294.7,216.9 319.3,217.0 344.0,216.8 C368.7,216.6 393.3,216.3 418.0,216.1 C442.7,215.9 467.3,216.7 492.0,215.4 C516.7,214.1 541.3,209.7 566.0,208.4 C590.7,207.2 627.7,208.0 640.0,208.0" fill="none" class="line-vscode" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M48.0,219.5 C60.3,216.8 97.3,207.4 122.0,203.4 C146.7,199.4 171.3,198.1 196.0,195.5 C220.7,192.8 245.3,188.8 270.0,187.4 C294.7,186.0 319.3,189.9 344.0,187.0 C368.7,184.0 393.3,173.2 418.0,169.8 C442.7,166.3 467.3,180.2 492.0,166.3 C516.7,152.5 541.3,100.6 566.0,86.6 C590.7,72.7 627.7,83.2 640.0,82.5" fill="none" class="line-total" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48.0,219.5 C59.0,216.8 91.9,207.4 113.8,203.4 C135.7,199.4 157.6,198.1 179.6,195.5 C201.5,192.8 223.4,188.8 245.3,187.4 C267.3,186.0 289.2,189.9 311.1,187.0 C333.0,184.0 355.0,173.2 376.9,169.8 C398.8,166.3 420.7,180.2 442.7,166.3 C464.6,152.5 486.5,100.6 508.4,86.6 C530.4,72.7 552.3,83.5 574.2,82.5 C596.1,81.6 629.0,81.3 640.0,81.0 L640.0,220.0 L48.0,220.0 Z" fill="url(#areaGrad)"/>
+  <path d="M48.0,219.7 C59.0,217.0 91.9,207.5 113.8,203.7 C135.7,199.9 157.6,199.1 179.6,196.8 C201.5,194.6 223.4,191.3 245.3,190.2 C267.3,189.1 289.2,192.9 311.1,190.2 C333.0,187.4 355.0,176.9 376.9,173.7 C398.8,170.5 420.7,183.5 442.7,170.9 C464.6,158.3 486.5,111.0 508.4,98.2 C530.4,85.5 552.3,95.4 574.2,94.6 C596.1,93.8 629.0,93.6 640.0,93.4" fill="none" class="line-openvsx" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48.0,219.9 C59.0,219.8 91.9,219.9 113.8,219.7 C135.7,219.4 157.6,219.0 179.6,218.6 C201.5,218.2 223.4,217.6 245.3,217.2 C267.3,216.9 289.2,217.0 311.1,216.8 C333.0,216.6 355.0,216.3 376.9,216.1 C398.8,215.9 420.7,216.7 442.7,215.4 C464.6,214.1 486.5,209.7 508.4,208.4 C530.4,207.2 552.3,208.1 574.2,208.0 C596.1,207.8 629.0,207.7 640.0,207.6" fill="none" class="line-vscode" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48.0,219.5 C59.0,216.8 91.9,207.4 113.8,203.4 C135.7,199.4 157.6,198.1 179.6,195.5 C201.5,192.8 223.4,188.8 245.3,187.4 C267.3,186.0 289.2,189.9 311.1,187.0 C333.0,184.0 355.0,173.2 376.9,169.8 C398.8,166.3 420.7,180.2 442.7,166.3 C464.6,152.5 486.5,100.6 508.4,86.6 C530.4,72.7 552.3,83.5 574.2,82.5 C596.1,81.6 629.0,81.3 640.0,81.0" fill="none" class="line-total" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <circle cx="640" cy="82.51466666666667" r="4.5" class="dot-total" stroke-width="2"/>
-    <text x="658" y="86.51466666666667" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Total</text>
-    <text x="697" y="86.51466666666667" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">1.2k</text>
-    <circle cx="640" cy="94.55466666666668" r="3.5" class="dot-openvsx" stroke-width="1.8"/>
-    <text x="658" y="104.51466666666667" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Open VSX</text>
-    <text x="716.8" y="104.51466666666667" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">1.1k</text>
-    <circle cx="640" cy="207.96" r="3.5" class="dot-vscode" stroke-width="1.8"/>
-    <text x="658" y="211.96" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">VS Code</text>
-    <text x="710.2" y="211.96" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">105</text>
+  <circle cx="640" cy="81.024" r="4.5" class="dot-total" stroke-width="2"/>
+    <text x="658" y="85.024" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Total</text>
+    <text x="697" y="85.024" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">1.2k</text>
+    <circle cx="640" cy="93.408" r="3.5" class="dot-openvsx" stroke-width="1.8"/>
+    <text x="658" y="103.024" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">Open VSX</text>
+    <text x="716.8" y="103.024" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">1.1k</text>
+    <circle cx="640" cy="207.616" r="3.5" class="dot-vscode" stroke-width="1.8"/>
+    <text x="658" y="211.616" class="end-label" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">VS Code</text>
+    <text x="710.2" y="211.616" class="end-value" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif">108</text>
 </svg>
