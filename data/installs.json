@@ -442,5 +442,11 @@
     "vscode": 201,
     "openvsx": 2210,
     "total": 2411
+  },
+  {
+    "date": "2026-07-08",
+    "vscode": 202,
+    "openvsx": 2216,
+    "total": 2418
   }
 ]
